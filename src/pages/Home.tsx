@@ -125,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section aria-label="Our impact" className="bg-indigo bg-gara text-paper">
+      <section aria-label="Our impact" className="bg-indigo text-paper">
         <Container>
           <RevealGroup as="dl" className="grid grid-cols-2 lg:grid-cols-4" stagger={0.12}>
             {stats.map((s, i) => (
@@ -188,7 +188,7 @@ export default function Home() {
       </div>
 
       {/* Programmes */}
-      <Section tone="sand" className="bg-gara-ink">
+      <Section tone="sand" >
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading eyebrow="What we do" title="Four programmes. One purpose." />
           <Reveal>

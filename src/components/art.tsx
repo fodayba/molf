@@ -1,6 +1,6 @@
 /*
  * Decorative SVG artwork: abstract motifs drawn from Sierra Leonean textiles
- * (gara tie-dye, country cloth) and landscape (sun, hills, leaves). The rising
+ * (country cloth) and landscape (sun, hills, leaves). The rising
  * pill-shaped figures echo the three bars of the logo. Animated with Motion.
  */
 import { motion, useMotionValue, useScroll, useTransform, type MotionValue } from 'motion/react'
@@ -138,18 +138,6 @@ function Figures({
   )
 }
 
-function GaraPattern({ id, color, opacity = 0.14 }: { id: string; color: string; opacity?: number }) {
-  return (
-    <pattern id={id} width="36" height="36" patternUnits="userSpaceOnUse">
-      <g fill="none" stroke={color} strokeOpacity={opacity} strokeWidth="1.2">
-        <circle cx="18" cy="18" r="11" />
-        <circle cx="18" cy="18" r="5" />
-      </g>
-      <circle cx="18" cy="18" r="1.6" fill={color} fillOpacity={opacity + 0.06} />
-    </pattern>
-  )
-}
-
 /** A thin outline that draws itself in. */
 function DrawPath({ d, delay = 0, duration = 2.4 }: { d: string; delay?: number; duration?: number }) {
   return (
@@ -202,7 +190,6 @@ export function HeroArt({
         <clipPath id={`${id}a`}>
           <path d="M80 680 V300 A220 220 0 0 1 520 300 V680 Z" />
         </clipPath>
-        <GaraPattern id={`${id}p`} color={C.paper} />
       </defs>
 
       <motion.g
@@ -213,7 +200,6 @@ export function HeroArt({
       >
         <g clipPath={`url(#${id}a)`}>
           <rect width="600" height="680" fill={C.indigo} />
-          <rect width="600" height="680" fill={`url(#${id}p)`} />
           <motion.g style={{ x: ringX }}>
             {[172, 212].map((r, i) => (
               <motion.circle
@@ -308,19 +294,13 @@ export function HeroArt({
 
 /** Small emblem for each programme, used on cards and the Programmes page. */
 export function ProgramArt({ index, className = '' }: { index: number; className?: string }) {
-  const id = useSvgId('prog')
   const variant = index % 4
 
   return (
     <svg viewBox="0 0 240 240" className={className} aria-hidden="true">
-      <defs>
-        <GaraPattern id={`${id}p`} color={C.paper} opacity={0.12} />
-      </defs>
-
       {variant === 0 && (
         <>
           <path d="M40 228 V120 A80 80 0 0 1 200 120 V228 Z" fill={C.indigo} />
-          <path d="M40 228 V120 A80 80 0 0 1 200 120 V228 Z" fill={`url(#${id}p)`} />
           <circle cx="120" cy="122" r="36" fill={C.ochre} />
           <Figures x={88} base={228} scale={0.42} color={C.paper} />
         </>
@@ -384,7 +364,6 @@ export function HeaderMotif({ variant = 0, className = '' }: { variant?: number;
   return (
     <svg viewBox="0 0 320 320" className={className} aria-hidden="true">
       <defs>
-        <GaraPattern id={`${id}p`} color={C.paper} opacity={0.12} />
         <clipPath id={`${id}c`}>
           <path d="M50 320 V170 A110 110 0 0 1 270 170 V320 Z" />
         </clipPath>
@@ -397,7 +376,6 @@ export function HeaderMotif({ variant = 0, className = '' }: { variant?: number;
       >
         <g clipPath={`url(#${id}c)`}>
           <rect width="320" height="320" fill={m.arch} />
-          <rect width="320" height="320" fill={`url(#${id}p)`} />
           <motion.circle
             cx="160"
             cy="180"
@@ -429,17 +407,12 @@ export function HeaderMotif({ variant = 0, className = '' }: { variant?: number;
 
 /** Full-bleed artwork panel used in place of photos for calls to action. Animates when scrolled into view. */
 export function MotifPanel({ variant, className = '' }: { variant: 'clay' | 'forest'; className?: string }) {
-  const id = useSvgId('panel')
   const bg = variant === 'clay' ? C.clay : C.forest
   const inView = { initial: 'hidden', whileInView: 'show', viewport: { once: true, margin: '0px 0px -15% 0px' } } as const
 
   return (
     <motion.svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden="true" {...inView}>
-      <defs>
-        <GaraPattern id={`${id}p`} color={C.paper} opacity={0.1} />
-      </defs>
       <rect width="600" height="400" fill={bg} />
-      <rect width="600" height="400" fill={`url(#${id}p)`} />
       {variant === 'clay' ? (
         <>
           {[180, 140, 100, 60].map((r, i) => (

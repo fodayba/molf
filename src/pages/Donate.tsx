@@ -29,7 +29,7 @@ function CopyButton({ value }: { value: string }) {
     <button
       type="button"
       onClick={copy}
-      className="relative inline-flex h-7 items-center rounded-full px-1.5 text-muted transition-colors duration-300 hover:bg-sand hover:text-ink"
+      className="relative -my-2 inline-flex h-10 min-w-10 items-center justify-center rounded-full px-2 text-muted transition-colors duration-300 hover:bg-sand hover:text-ink"
       aria-label={copied ? 'Copied' : `Copy ${value}`}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -126,7 +126,7 @@ function ImpactPicker() {
         </p>
       </Reveal>
 
-      <Reveal delay={0.15} className="relative overflow-hidden rounded-3xl bg-indigo bg-gara p-8 text-paper sm:p-12 lg:col-span-7">
+      <Reveal delay={0.15} className="relative overflow-hidden rounded-3xl bg-indigo p-8 text-paper sm:p-12 lg:col-span-7">
         <HeaderMotif variant={0} className="pointer-events-none absolute -right-10 -bottom-2 w-48 opacity-30 sm:w-64" />
         <div className="relative min-h-56" aria-live="polite">
           <Eyebrow light>Your gift</Eyebrow>

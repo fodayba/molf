@@ -35,7 +35,7 @@ export default function NewsPost() {
           <Reveal y={8}>
             <Link
               to="/news"
-              className="group inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-ink"
+              className="group relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] inline-flex items-center gap-2 text-sm text-muted transition-colors duration-300 hover:text-ink"
             >
               <ArrowLeft
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"

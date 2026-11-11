@@ -23,7 +23,7 @@ const tones: Record<Tone, string> = {
   paper: 'bg-paper',
   sand: 'bg-sand',
   ink: 'bg-ink text-paper/70',
-  indigo: 'bg-indigo bg-gara text-paper/75',
+  indigo: 'bg-indigo text-paper/75',
 }
 
 export function Section({
@@ -162,7 +162,7 @@ export function ArrowLink({
     <Link
       to={to}
       aria-label={label}
-      className={`group inline-flex items-center gap-2 border-b pb-1 text-sm font-medium transition-colors duration-300 ${
+      className={`group relative after:absolute after:-inset-x-2 after:-inset-y-3 after:content-[''] inline-flex items-center gap-2 border-b pb-1 text-sm font-medium transition-colors duration-300 ${
         light ? 'border-paper/30 text-paper hover:border-paper' : 'border-ink/20 text-ink hover:border-ink'
       }`}
     >

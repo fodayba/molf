@@ -69,7 +69,7 @@ function ProgrammeArticle({ programme: p, index: i }: { programme: Program; inde
       className="grid scroll-mt-32 items-center gap-10 border-b border-line py-20 last:border-b-0 sm:py-24 lg:grid-cols-12 lg:gap-16"
     >
       <Reveal
-        className={`flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl bg-sand bg-gara-ink lg:col-span-6 ${
+        className={`flex aspect-[4/3] items-center justify-center overflow-hidden rounded-3xl bg-sand lg:col-span-6 ${
           flip ? 'lg:order-2 lg:col-start-7' : ''
         }`}
       >
