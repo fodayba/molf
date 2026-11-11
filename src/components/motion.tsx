@@ -84,6 +84,29 @@ export function RevealItem({ children, as = 'div', className, id }: BaseProps) {
 
 type Segment = { text: string; italic?: boolean; className?: string }
 
+/** Unveils an image (or placeholder) with a rising mask and a slow settle. */
+export function ImageReveal({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      className={`overflow-hidden rounded-2xl ${className}`}
+      initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+      whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+      viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+      transition={{ duration: 1.4, ease, delay }}
+    >
+      <motion.div
+        className="h-full"
+        initial={{ scale: 1.15 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+        transition={{ duration: 1.8, ease, delay }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  )
+}
+
 /** Headline whose words slide up from behind a mask, one by one. */
 export function SplitHeadline({ segments, delay = 0.1 }: { segments: Segment[]; delay?: number }) {
   let index = 0
