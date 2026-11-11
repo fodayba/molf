@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { Link, useParams } from 'react-router'
 import { ImageReveal, Reveal, RevealGroup, RevealItem, SplitHeadline } from '../components/motion.tsx'
 import NewsCard from '../components/NewsCard.tsx'
-import { Container, Eyebrow, ImagePlaceholder } from '../components/ui.tsx'
+import { Container, Eyebrow } from '../components/ui.tsx'
 import { newsPosts, site } from '../data/site.ts'
 import { formatDate } from '../lib/utils.ts'
 import NotFound from './NotFound.tsx'
@@ -60,8 +60,8 @@ export default function NewsPost() {
           </Reveal>
         </Container>
         <Container className="mt-12 max-w-5xl sm:mt-16">
-          <ImageReveal className="aspect-[16/9]" delay={0.4}>
-            <ImagePlaceholder label="Article photograph" className="h-full rounded-none border-0" />
+          <ImageReveal className="aspect-[16/9] bg-sand" delay={0.4}>
+            <img src={post.image} alt="" className="h-full w-full object-cover" />
           </ImageReveal>
         </Container>
         <Container className="mt-12 max-w-3xl sm:mt-16">
@@ -73,6 +73,32 @@ export default function NewsPost() {
             ))}
           </RevealGroup>
         </Container>
+        {post.gallery.length > 0 && (
+          <Container className="mt-16 max-w-5xl sm:mt-20">
+            <Reveal>
+              <Eyebrow>Photos</Eyebrow>
+            </Reveal>
+            <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+              {post.gallery.map((src, i) => (
+                <li key={src}>
+                  <a
+                    href={src}
+                    target="_blank"
+                    rel="noopener"
+                    className="group block overflow-hidden rounded-xl bg-sand"
+                  >
+                    <img
+                      src={src}
+                      alt={`Photo ${i + 1} of ${post.gallery.length}: ${post.title}`}
+                      loading="lazy"
+                      className="aspect-square w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        )}
       </article>
 
       {more.length > 0 && (

@@ -2,17 +2,17 @@ import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router'
 import type { NewsPost } from '../data/site.ts'
 import { formatDate } from '../lib/utils.ts'
-import { ImagePlaceholder } from './ui.tsx'
 
 export default function NewsCard({ post, surface = 'sand' }: { post: NewsPost; surface?: 'sand' | 'paper' }) {
   return (
     <article className="group">
       <Link to={`/news/${post.slug}`} className="block">
-        <div className="relative overflow-hidden rounded-2xl">
-          <ImagePlaceholder
-            label="News photo"
-            surface={surface}
-            className="aspect-[4/3] transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        <div className={`relative overflow-hidden rounded-2xl ${surface === 'paper' ? 'bg-paper' : 'bg-sand'}`}>
+          <img
+            src={post.image}
+            alt=""
+            loading="lazy"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           />
           <span className="absolute top-4 right-4 inline-flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-ink text-paper opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
             <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />

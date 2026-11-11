@@ -139,8 +139,8 @@ export default function Programs() {
       <title>{`Programmes | ${site.name}`}</title>
       <PageHeader
         eyebrow="Programmes"
-        title="Leadership, practised at every stage."
-        intro="From secondary school classrooms to community town halls, each programme builds on the last."
+        title="Supporting children through school, and beyond."
+        intro="In partnership with our sponsors, we provide scholarships and school essentials, campaign against hunger, and give under-privileged young people the hope of becoming future leaders."
         motif={1}
       />
 
@@ -156,8 +156,8 @@ export default function Programs() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             light
-            title="Bring a programme to your community."
-            intro="We partner with schools, community organisations and businesses across Sierra Leone."
+            title="Partner with us."
+            intro="We work alongside sponsors and partners including Orange Foundation, Frenzy Network Sierra Leone, Focus 1000 and Pikin Bizness."
           />
           <Reveal delay={0.2} className="flex flex-col gap-3 sm:flex-row">
             <Magnetic className="flex [&>*]:flex-1">

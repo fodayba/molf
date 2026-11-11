@@ -5,7 +5,7 @@ import { Reveal, RevealGroup, RevealItem } from '../components/motion.tsx'
 import { PageHeader, Section } from '../components/ui.tsx'
 import { site } from '../data/site.ts'
 
-const subjects = ['General enquiry', 'Volunteering', 'Mentoring', 'Partnership', 'Donation', 'Media']
+const subjects = ['General enquiry', 'Membership', 'Sponsorship', 'Partnership', 'Donation', 'Events', 'Media']
 
 const timeFormat = new Intl.DateTimeFormat('en-GB', {
   timeZone: 'Africa/Freetown',
@@ -47,22 +47,17 @@ function FreetownClock() {
 
 export default function Contact() {
   const [params] = useSearchParams()
-  const { address, phone, email, hours } = site.contact
-
-  const details = [
-    { label: 'Visit', value: address.join(', ') },
-    { label: 'Call', value: phone, href: `tel:${phone.replace(/[^+\d]/g, '')}` },
-    { label: 'Write', value: email, href: `mailto:${email}` },
-    { label: 'Hours', value: hours },
-  ]
+  const { offices, email, hours } = site.contact
+  const linkClass =
+    'bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 hover:bg-[length:100%_1px]'
 
   return (
     <>
       <title>{`Contact | ${site.name}`}</title>
       <PageHeader
         eyebrow="Contact"
-        title="We’d be glad to hear from you."
-        intro="Questions, partnerships or press enquiries. We reply to every message within a few working days."
+        title="Get in touch."
+        intro="Questions about membership, sponsoring a child, partnerships or donations? We’d be glad to hear from you."
         motif={3}
       />
 
@@ -73,23 +68,41 @@ export default function Contact() {
               <FreetownClock />
             </Reveal>
             <RevealGroup as="dl" className="mt-8 border-t border-line" stagger={0.08}>
-              {details.map(({ label, value, href }) => (
-                <RevealItem key={label} className="border-b border-line py-6">
-                  <dt className="text-[0.7rem] font-medium tracking-[0.22em] text-muted uppercase">{label}</dt>
-                  <dd className="mt-2 break-words text-ink">
-                    {href ? (
-                      <a
-                        href={href}
-                        className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 hover:bg-[length:100%_1px]"
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      value
-                    )}
+              {offices.map((office) => (
+                <RevealItem key={office.name} className="border-b border-line py-6">
+                  <dt className="text-[0.7rem] font-medium tracking-[0.22em] text-muted uppercase">
+                    {office.name} <span className="normal-case tracking-normal">· {office.note}</span>
+                  </dt>
+                  <dd className="mt-2 text-ink">
+                    <address className="not-italic">
+                      {office.address.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </address>
+                    <span className="mt-3 flex flex-col gap-1">
+                      {office.phones.map((phone) => (
+                        <a key={phone} href={`tel:${phone.replace(/[^+\d]/g, '')}`} className={`self-start ${linkClass}`}>
+                          {phone}
+                        </a>
+                      ))}
+                    </span>
                   </dd>
                 </RevealItem>
               ))}
+              <RevealItem className="border-b border-line py-6">
+                <dt className="text-[0.7rem] font-medium tracking-[0.22em] text-muted uppercase">Write</dt>
+                <dd className="mt-2 break-words text-ink">
+                  <a href={`mailto:${email}`} className={linkClass}>
+                    {email}
+                  </a>
+                </dd>
+              </RevealItem>
+              <RevealItem className="border-b border-line py-6">
+                <dt className="text-[0.7rem] font-medium tracking-[0.22em] text-muted uppercase">Hours</dt>
+                <dd className="mt-2 text-ink">{hours}</dd>
+              </RevealItem>
             </RevealGroup>
           </div>
 

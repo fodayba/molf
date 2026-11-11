@@ -20,24 +20,24 @@ import { palette as C } from '../lib/palette.ts'
 
 const invitations = [
   {
-    eyebrow: 'Give your time',
-    title: 'Volunteer or mentor',
-    text: 'Share your experience with young leaders, in Freetown or online from anywhere in the world.',
+    eyebrow: 'Join us',
+    title: 'Become a member',
+    text: 'MOL Foundation is funded by its members through monthly contributions, donations from patrons and fundraising events.',
     to: '/get-involved',
     cta: 'Ways to get involved',
     art: 'forest' as const,
   },
   {
     eyebrow: 'Give a gift',
-    title: 'Fund a future leader',
-    text: 'Your support pays for training, materials and mentorship for students across all 16 districts.',
+    title: 'Sponsor a child',
+    text: 'Education is a lifetime wealth that benefits a child, their family and the nation as a whole.',
     to: '/donate',
     cta: 'Make a donation',
     art: 'clay' as const,
   },
 ]
 
-const marqueeWords = [...values.map((v) => v.title), 'Leadership', 'Community']
+const marqueeWords = [...values.map((v) => v.title), 'Educate a child', 'Build a nation']
 
 function SunMark() {
   return (
@@ -76,7 +76,7 @@ export default function Home() {
 
   return (
     <>
-      <title>{`${site.name} | Freetown, Sierra Leone`}</title>
+      <title>{`${site.name} | ${site.tagline}`}</title>
 
       {/* Hero */}
       <section
@@ -90,15 +90,14 @@ export default function Home() {
         <Container className="grid items-end gap-12 pt-14 sm:pt-20 lg:grid-cols-12 lg:gap-10 lg:pt-24">
           <div className="pb-4 lg:col-span-7 lg:pb-28">
             <Reveal y={12}>
-              <Eyebrow>Freetown, Sierra Leone · Est. {site.founded}</Eyebrow>
+              <Eyebrow>London &amp; Freetown · Est. {site.founded}</Eyebrow>
             </Reveal>
             <h1 className="mt-8 text-[3.25rem] leading-[1] sm:text-7xl lg:text-[5.75rem]">
               <SplitHeadline
                 delay={0.2}
                 segments={[
-                  { text: 'Cultivating the leaders' },
-                  { text: 'Sierra Leone', italic: true, className: 'text-clay' },
-                  { text: 'deserves.' },
+                  { text: 'Educate a child,' },
+                  { text: 'build a nation.', italic: true, className: 'text-clay' },
                 ]}
               />
             </h1>
@@ -107,11 +106,11 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.9} className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Magnetic className="flex [&>*]:flex-1">
-                <ButtonLink to="/programmes">Explore our programmes</ButtonLink>
+                <ButtonLink to="/programmes">See our work</ButtonLink>
               </Magnetic>
               <Magnetic className="flex [&>*]:flex-1">
                 <ButtonLink to="/donate" variant="outline">
-                  Support our work
+                  Support us
                 </ButtonLink>
               </Magnetic>
             </Reveal>
@@ -149,18 +148,18 @@ export default function Home() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionHeading eyebrow="Who we are" title="Leadership begins in the community." />
+            <SectionHeading eyebrow="Who we are" title="Every child deserves a fair chance." />
             <Chevrons className="mt-10 hidden h-12 w-auto lg:block" />
           </div>
           <RevealGroup className="space-y-6 text-lg lg:col-span-6 lg:col-start-7 lg:pt-12" delay={0.15}>
             <RevealItem as="p">
-              Sierra Leone’s future depends on leaders who are principled, skilled and committed to service. We
-              find young people with that potential, wherever they are, and give them the training, mentors and
-              opportunities to grow.
+              We believe that being born into poverty is no reason to deprive children of their basic human rights
+              to education, healthcare and proper nutrition.
             </RevealItem>
             <RevealItem as="p">
-              Our work is patient and personal. Small cohorts, long-term mentoring and real responsibility in their
-              own communities.
+              Our aim is to inspire and empower students and teachers in Sierra Leone to strive for academic
+              excellence, nurturing every gift, talent and potential so that young people become independent and
+              useful citizens.
             </RevealItem>
             <RevealItem className="pt-2">
               <ArrowLink to="/about">Our story</ArrowLink>
@@ -190,7 +189,7 @@ export default function Home() {
       {/* Programmes */}
       <Section tone="sand" >
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading eyebrow="What we do" title="Four programmes. One purpose." />
+          <SectionHeading eyebrow="What we do" title="Our work in Sierra Leone" />
           <Reveal>
             <ArrowLink to="/programmes">All programmes</ArrowLink>
           </Reveal>
@@ -234,11 +233,11 @@ export default function Home() {
           </Reveal>
           <blockquote className="-mt-4 font-serif text-3xl leading-snug text-balance text-paper sm:text-[2.75rem] sm:leading-[1.2]">
             <Reveal delay={0.1}>
-              Every community has leaders waiting to be discovered. Our work is to find them, and to help them grow.
+              Education is the most powerful weapon which you can use to change the world.
             </Reveal>
           </blockquote>
           <Reveal delay={0.25} as="figcaption" className="mt-10 text-sm text-paper/60">
-            <span className="text-paper">[Founder Name]</span>, Founder &amp; Executive Director
+            <span className="text-paper">Nelson Mandela</span>
           </Reveal>
         </figure>
       </Section>
@@ -287,9 +286,10 @@ export default function Home() {
       {/* Closing call to action */}
       <Section tone="ink">
         <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading center light title="Invest in the next generation." />
+          <SectionHeading center light title="Let’s build our nation together." />
           <Reveal delay={0.2} as="p" className="mx-auto mt-6 max-w-lg text-lg">
-            Join the people and partners helping young Sierra Leoneans become the leaders their communities need.
+            We welcome all would-be patrons, donors and well-wishers to join us in educating children for a better
+            tomorrow.
           </Reveal>
           <Reveal delay={0.3} className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <Magnetic className="flex [&>*]:flex-1">

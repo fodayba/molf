@@ -9,7 +9,6 @@ const socialLinks = [
   { label: 'Facebook', href: site.social.facebook },
   { label: 'Instagram', href: site.social.instagram },
   { label: 'X', href: site.social.x },
-  { label: 'LinkedIn', href: site.social.linkedin },
 ]
 
 const headingClass = 'text-[0.7rem] font-medium tracking-[0.22em] text-paper/40 uppercase'
@@ -53,9 +52,16 @@ export default function Footer() {
 
         <div className="col-span-2 sm:col-span-1 lg:col-span-2">
           <h2 className={`${headingClass} font-sans`}>Contact</h2>
-          <address className="mt-6 space-y-3 text-sm not-italic">
-            <p>{site.contact.address.join(', ')}</p>
-            <p>{site.contact.phone}</p>
+          <address className="mt-6 space-y-4 text-sm not-italic">
+            {site.contact.offices.map((office) => (
+              <p key={office.name}>
+                <span className="block text-paper">{office.name}</span>
+                {office.address.join(', ')}
+                <a href={`tel:${office.phones[0].replace(/[^+\d]/g, '')}`} className={`${linkClass} block`}>
+                  {office.phones[0]}
+                </a>
+              </p>
+            ))}
             <a href={`mailto:${site.contact.email}`} className={`${linkClass} block break-all`}>
               {site.contact.email}
             </a>
@@ -68,7 +74,7 @@ export default function Footer() {
           <p>
             © {currentYear} {site.name}
           </p>
-          <p>Freetown, Sierra Leone</p>
+          <p>London, United Kingdom · Freetown, Sierra Leone</p>
         </Container>
       </div>
     </footer>

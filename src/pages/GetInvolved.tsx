@@ -1,36 +1,37 @@
-import { Building2, HandHeart, Megaphone, UserRoundCheck } from 'lucide-react'
+import { Building2, CalendarHeart, GraduationCap, HandHeart } from 'lucide-react'
 import { Magnetic, Reveal, RevealGroup, RevealItem, Spotlight } from '../components/motion.tsx'
-import { ArrowLink, ButtonLink, PageHeader, Section, SectionHeading } from '../components/ui.tsx'
-import { site } from '../data/site.ts'
+import { ArrowLink, ButtonLink, Eyebrow, PageHeader, Section, SectionHeading } from '../components/ui.tsx'
+import { fundraisingActivities, pastEvents, site } from '../data/site.ts'
+import { formatDate } from '../lib/utils.ts'
 
 const ways = [
   {
     icon: HandHeart,
-    title: 'Volunteer',
-    text: 'Help run workshops, events and community forums in Freetown and across the provinces.',
-    cta: 'Apply to volunteer',
-    subject: 'Volunteering',
+    title: 'Become a member',
+    text: 'Our members fund our work through monthly contributions. Join our network of members and associate members.',
+    cta: 'Ask about membership',
+    subject: 'Membership',
   },
   {
-    icon: UserRoundCheck,
-    title: 'Mentor',
-    text: 'Guide an emerging leader for twelve months, in person or online. Professionals at home and in the diaspora are welcome.',
-    cta: 'Apply to mentor',
-    subject: 'Mentoring',
+    icon: GraduationCap,
+    title: 'Sponsor a child',
+    text: 'Give a child a lifetime wealth: an education. Sponsorship provides scholarships, uniforms, stationery and other school essentials.',
+    cta: 'Sponsor a child',
+    subject: 'Sponsorship',
+  },
+  {
+    icon: CalendarHeart,
+    title: 'Attend our events',
+    text: 'Join family and friends at our fun days and barbecues, day outings, dinner and dance, and awards nights.',
+    cta: 'Ask about upcoming events',
+    subject: 'Events',
   },
   {
     icon: Building2,
-    title: 'Partner',
-    text: 'Schools, businesses and organisations can co-host programmes, sponsor cohorts or offer internships.',
+    title: 'Partner with us',
+    text: 'Sponsors and partners such as Orange Foundation, Frenzy Network Sierra Leone, Focus 1000 and Pikin Bizness help make our work possible.',
     cta: 'Discuss a partnership',
     subject: 'Partnership',
-  },
-  {
-    icon: Megaphone,
-    title: 'Advocate',
-    text: 'Follow our work, share our stories and tell young people about the opportunities we offer.',
-    cta: 'Get in touch',
-    subject: 'General enquiry',
   },
 ]
 
@@ -40,8 +41,8 @@ export default function GetInvolved() {
       <title>{`Get Involved | ${site.name}`}</title>
       <PageHeader
         eyebrow="Get involved"
-        title="Lend your time, your experience, your voice."
-        intro="There are many ways to support young leaders in Sierra Leone. Choose the one that suits you."
+        title="Join us in educating children for a better tomorrow."
+        intro="MOL Foundation is funded by its members, donations from patrons and fundraising activities. Here is how you can help."
         motif={1}
       />
 
@@ -68,12 +69,56 @@ export default function GetInvolved() {
         </RevealGroup>
       </Section>
 
+      {/* Fundraising and events */}
+      <Section tone="sand">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              eyebrow="Fundraising"
+              title="How we raise funds"
+              intro="We organise fundraising activities to meet the huge financial obligations of educating our future leaders."
+            />
+            <RevealGroup as="ul" className="mt-10 border-t border-ink/10" stagger={0.06}>
+              {fundraisingActivities.map((a) => (
+                <RevealItem as="li" key={a} className="border-b border-ink/10 py-3.5 text-ink">
+                  {a}
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <Reveal>
+              <Eyebrow>Past events</Eyebrow>
+            </Reveal>
+            <RevealGroup className="mt-6 space-y-5" stagger={0.12}>
+              {pastEvents.map((e) => (
+                <RevealItem key={e.title} as="article" className="rounded-3xl bg-paper p-8">
+                  <p className="text-xs text-muted">
+                    <time dateTime={e.date}>{formatDate(e.date)}</time>
+                    <span className="mx-2" aria-hidden="true">
+                      /
+                    </span>
+                    {e.time}
+                  </p>
+                  <h3 className="mt-3 font-serif text-3xl font-normal">{e.title}</h3>
+                  <p className="mt-1 text-sm text-muted">{e.location}</p>
+                  <p className="mt-4">{e.text}</p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+            <Reveal className="mt-8">
+              <ArrowLink to="/news">See photos from past events</ArrowLink>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
+
       <Section tone="indigo">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             light
             title="Prefer to give a gift?"
-            intro="Every donation funds training, materials and mentorship for young leaders."
+            intro="Every donation helps a child in Sierra Leone get the education they deserve."
           />
           <Reveal delay={0.2}>
             <Magnetic className="flex [&>*]:flex-1">

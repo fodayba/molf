@@ -17,7 +17,6 @@ const socials = [
   { label: 'Facebook', href: site.social.facebook },
   { label: 'Instagram', href: site.social.instagram },
   { label: 'X', href: site.social.x },
-  { label: 'LinkedIn', href: site.social.linkedin },
 ]
 
 /** Two lines that morph into a cross. */
