@@ -159,7 +159,7 @@ export default function Programs() {
             title="Partner with us."
             intro="We work alongside sponsors and partners including Orange Foundation, Frenzy Network Sierra Leone, Focus 1000 and Pikin Bizness."
           />
-          <Reveal delay={0.2} className="flex flex-col gap-3 sm:flex-row">
+          <Reveal delay={0.2} className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <Magnetic className="flex [&>*]:flex-1">
               <ButtonLink to="/contact?subject=Partnership" variant="light">
                 Partner with us

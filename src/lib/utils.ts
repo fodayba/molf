@@ -8,7 +8,7 @@ const variants: Record<ButtonVariant, string> = {
 }
 
 export const buttonClass = (variant: ButtonVariant = 'primary') =>
-  `inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm font-medium tracking-wide transition-[color,background-color,border-color,scale] duration-300 active:scale-[0.97] ${variants[variant]}`
+  `inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm whitespace-nowrap font-medium tracking-wide transition-[color,background-color,border-color,scale] duration-300 active:scale-[0.97] ${variants[variant]}`
 
 export const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', {

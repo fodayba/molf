@@ -120,7 +120,7 @@ export default function GetInvolved() {
             title="Prefer to give a gift?"
             intro="Every donation helps a child in Sierra Leone get the education they deserve."
           />
-          <Reveal delay={0.2}>
+          <Reveal delay={0.2} className="shrink-0">
             <Magnetic className="flex [&>*]:flex-1">
               <ButtonLink to="/donate" variant="light">
                 Donate
