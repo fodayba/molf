@@ -7,6 +7,7 @@ import NewsCard from '../components/NewsCard.tsx'
 import { Container, Eyebrow } from '../components/ui.tsx'
 import { newsPosts, site } from '../data/site.ts'
 import { formatDate } from '../lib/utils.ts'
+import Gallery from '../components/Gallery.tsx'
 import NotFound from './NotFound.tsx'
 
 export default function NewsPost() {
@@ -78,25 +79,7 @@ export default function NewsPost() {
             <Reveal>
               <Eyebrow>Photos</Eyebrow>
             </Reveal>
-            <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-              {post.gallery.map((src, i) => (
-                <li key={src}>
-                  <a
-                    href={src}
-                    target="_blank"
-                    rel="noopener"
-                    className="group block overflow-hidden rounded-xl bg-sand"
-                  >
-                    <img
-                      src={src}
-                      alt={`Photo ${i + 1} of ${post.gallery.length}: ${post.title}`}
-                      loading="lazy"
-                      className="aspect-square w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                    />
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <Gallery images={post.gallery} title={post.title} />
           </Container>
         )}
       </article>
